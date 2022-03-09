@@ -1,0 +1,25 @@
+#Print instance variables (usage "pi classInst")
+#alias pi for k in %1.__dict__.keys(): print "%1.",k,"=",%1.__dict__[k]
+alias pi pp %1.__dict__
+
+#Print instance variables in self
+alias ps pi self
+
+# self keys
+alias psk pp self.__dict__.keys()
+
+# a value from self (handles _vars within class)
+alias psv pp eval('self.%1' if '%1' in dir(self) else 'self._{}%1'.format(self.__class__.__name__))
+
+# list lines around current breakpoint
+# without pdbpp
+#alias lw u;;d;;l
+# with pdbpp
+alias lw u;;d
+
+# easier to type go instead of tbreak
+alias go tbreak %1;;c
+alias g tbreak %1;;c
+
+# doc how to get out of python interpreter before entering
+alias py p "Press ctrl-d to return";;interact
